@@ -1,5 +1,8 @@
 package ru.netology.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
 import com.google.gson.Gson;
 import ru.netology.model.Post;
 import ru.netology.service.PostService;
