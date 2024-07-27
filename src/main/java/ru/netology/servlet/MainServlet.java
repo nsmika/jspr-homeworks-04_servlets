@@ -1,8 +1,7 @@
 package ru.netology.servlet;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import ru.netology.resourses.AppConfig;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 import ru.netology.controller.PostController;
 
 import javax.servlet.ServletConfig;
@@ -10,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 public class MainServlet extends HttpServlet {
     private PostController controller;
 
@@ -22,7 +22,7 @@ public class MainServlet extends HttpServlet {
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
-        ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        WebApplicationContext context = WebApplicationContextUtils.getRequiredWebApplicationContext(getServletContext());
         controller = context.getBean(PostController.class);
     }
 
@@ -31,7 +31,6 @@ public class MainServlet extends HttpServlet {
         try {
             final var path = req.getRequestURI();
             final var method = req.getMethod();
-            // primitive routing
             if (GET.equals(method) && API_POSTS.equals(path)) {
                 controller.all(resp);
                 return;

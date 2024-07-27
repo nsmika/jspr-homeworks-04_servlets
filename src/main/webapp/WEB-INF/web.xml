@@ -10,8 +10,6 @@
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
-    <response-character-encoding>UTF-8</response-character-encoding>
-    <!-- определение servlet'а -->
     <servlet>
         <servlet-name>mainServlet</servlet-name>
         <servlet-class>ru.netology.servlet.MainServlet</servlet-class>

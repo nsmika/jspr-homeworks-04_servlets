@@ -12,6 +12,7 @@ import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 
+@Repository
 public class PostRepository {
     private final ConcurrentHashMap<Long, Post> posts = new ConcurrentHashMap<>();
     private final AtomicLong counter = new AtomicLong();

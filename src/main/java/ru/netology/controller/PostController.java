@@ -11,11 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.Reader;
 
+@Controller
 public class PostController {
+    private final PostService service;
     public static final String APPLICATION_JSON = "application/json";
     private static final Gson gson = new Gson();
-    private final PostService service;
 
+    @Autowired
     public PostController(PostService service) {
         this.service = service;
     }
